@@ -18,3 +18,9 @@ aws lambda invoke --function-name orders-api out.json && cat out.json
 ```
 
 After merging WhyDenied's PR, run `terraform apply` again and invoke it once more. It returns `"status": "ok"`.
+
+A second call needs a different permission, `ssm:GetParametersByPath`, so the same loop can be shown again:
+
+```bash
+aws lambda invoke --function-name orders-api --payload '{"mode":"list"}' --cli-binary-format raw-in-base64-out out.json && cat out.json
+```

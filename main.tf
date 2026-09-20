@@ -63,7 +63,8 @@ resource "aws_lambda_function" "orders_api" {
 
   environment {
     variables = {
-      DB_URL_PARAM = aws_ssm_parameter.db_url.name
+      DB_URL_PARAM  = aws_ssm_parameter.db_url.name
+      CONFIG_PREFIX = "/demo/orders-api"
     }
   }
 }
